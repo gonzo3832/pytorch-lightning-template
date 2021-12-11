@@ -1,0 +1,354 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>src.data_loaders.pl_data_module module &#8212; project v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.loss_funcs package" href="src.loss_funcs.html" />
+    <link rel="prev" title="src.data_loaders.ds_image module" href="src.data_loaders.ds_image.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="src.loss_funcs.html" title="src.loss_funcs package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="src.data_loaders.ds_image.html" title="src.data_loaders.ds_image module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">project v1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="src.data_loaders.html" accesskey="U">src.data_loaders package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.data_loaders.pl_data_module">
+<span id="src-data-loaders-pl-data-module-module"></span><h1>src.data_loaders.pl_data_module module<a class="headerlink" href="#module-src.data_loaders.pl_data_module" title="Permalink to this headline">¶</a></h1>
+<p><strong>Custom Pytorch_ligntning data module</strong>
+| <em>pytorch_lightning.LightningDataModule</em>を定義するmodule。
+| instance化の際に、<em>dataのパス, dataset, dataloader</em>の設定値を格納したDictConfと、
+| <em>train, valid, test のpandas.DataFrame</em>を与えることで、<strong>動的にmodule定義</strong>を行う。</p>
+<dl class="class">
+<dt id="src.data_loaders.pl_data_module.MyDataModule">
+<em class="property">class </em><code class="descclassname">src.data_loaders.pl_data_module.</code><code class="descname">MyDataModule</code><span class="sig-paren">(</span><em>cfg_data_path</em>, <em>cfg_dataset</em>, <em>cfg_dataloader</em>, <em>train_df</em>, <em>valid_df</em>, <em>test_df</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytorch_lightning.core.datamodule.LightningDataModule</span></code></p>
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.get_datadir">
+<code class="descname">get_datadir</code><span class="sig-paren">(</span><em>phase</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.get_datadir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.get_datadir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.get_dataframe">
+<code class="descname">get_dataframe</code><span class="sig-paren">(</span><em>phase</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.get_dataframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.get_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.get_dataset">
+<code class="descname">get_dataset</code><span class="sig-paren">(</span><em>phase</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.get_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.get_dataset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.get_loader">
+<code class="descname">get_loader</code><span class="sig-paren">(</span><em>phase</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.get_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.get_loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.test_dataloader">
+<code class="descname">test_dataloader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.test_dataloader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.test_dataloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement one or multiple PyTorch DataLoaders for testing.</p>
+<p>The dataloader you return will not be reloaded unless you set
+<a href="#id1"><span class="problematic" id="id2">:paramref:`~pytorch_lightning.trainer.Trainer.reload_dataloaders_every_n_epochs`</span></a> to
+a postive integer.</p>
+<p>For data processing use the following pattern:</p>
+<blockquote>
+<div><ul class="simple">
+<li>download in <code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code></li>
+<li>process and split in <code class="xref py py-meth docutils literal notranslate"><span class="pre">setup()</span></code></li>
+</ul>
+</div></blockquote>
+<p>However, the above are only necessary for distributed processing.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">do not assign state in prepare_data</p>
+</div>
+<ul class="simple">
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></li>
+<li>…</li>
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code></li>
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">setup()</span></code></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.train_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.train_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">train_dataloader()</span></code></a></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.val_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.val_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">val_dataloader()</span></code></a></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.test_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.test_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">test_dataloader()</span></code></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lightning adds the correct sampler for distributed and arbitrary hardware.
+There is no need to set it yourself.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code> or a sequence of them specifying testing samples.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,))])</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;/path/to/mnist/&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+                    <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">loader</span>
+
+<span class="c1"># can also return multiple dataloaders</span>
+<span class="k">def</span> <span class="nf">test_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">loader_a</span><span class="p">,</span> <span class="n">loader_b</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">loader_n</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you don’t need a test dataset and a <code class="xref py py-meth docutils literal notranslate"><span class="pre">test_step()</span></code>, you don’t need to implement
+this method.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the case where you return multiple test dataloaders, the <code class="xref py py-meth docutils literal notranslate"><span class="pre">test_step()</span></code>
+will have an argument <code class="docutils literal notranslate"><span class="pre">dataloader_idx</span></code> which matches the order here.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.train_dataloader">
+<code class="descname">train_dataloader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.train_dataloader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.train_dataloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement one or more PyTorch DataLoaders for training.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A collection of <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code> specifying training samples.
+In the case of multiple dataloaders, please see this <span class="xref std std-ref">page</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>The dataloader you return will not be reloaded unless you set
+<a href="#id3"><span class="problematic" id="id4">:paramref:`~pytorch_lightning.trainer.Trainer.reload_dataloaders_every_n_epochs`</span></a> to
+a positive integer.</p>
+<p>For data processing use the following pattern:</p>
+<blockquote>
+<div><ul class="simple">
+<li>download in <code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code></li>
+<li>process and split in <code class="xref py py-meth docutils literal notranslate"><span class="pre">setup()</span></code></li>
+</ul>
+</div></blockquote>
+<p>However, the above are only necessary for distributed processing.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">do not assign state in prepare_data</p>
+</div>
+<ul class="simple">
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></li>
+<li>…</li>
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code></li>
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">setup()</span></code></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.train_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.train_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">train_dataloader()</span></code></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lightning adds the correct sampler for distributed and arbitrary hardware.
+There is no need to set it yourself.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># single dataloader</span>
+<span class="k">def</span> <span class="nf">train_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,))])</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;/path/to/mnist/&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+                    <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">loader</span>
+
+<span class="c1"># multiple dataloaders, return as list</span>
+<span class="k">def</span> <span class="nf">train_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">mnist</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">cifar</span> <span class="o">=</span> <span class="n">CIFAR</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">mnist_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">mnist</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">cifar_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">cifar</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="c1"># each batch will be a list of tensors: [batch_mnist, batch_cifar]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">mnist_loader</span><span class="p">,</span> <span class="n">cifar_loader</span><span class="p">]</span>
+
+<span class="c1"># multiple dataloader, return as dict</span>
+<span class="k">def</span> <span class="nf">train_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">mnist</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">cifar</span> <span class="o">=</span> <span class="n">CIFAR</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">mnist_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">mnist</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">cifar_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">cifar</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="c1"># each batch will be a dict of tensors: {&#39;mnist&#39;: batch_mnist, &#39;cifar&#39;: batch_cifar}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;mnist&#39;</span><span class="p">:</span> <span class="n">mnist_loader</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">:</span> <span class="n">cifar_loader</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.data_loaders.pl_data_module.MyDataModule.val_dataloader">
+<code class="descname">val_dataloader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/data_loaders/pl_data_module.html#MyDataModule.val_dataloader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.data_loaders.pl_data_module.MyDataModule.val_dataloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement one or multiple PyTorch DataLoaders for validation.</p>
+<p>The dataloader you return will not be reloaded unless you set
+<a href="#id5"><span class="problematic" id="id6">:paramref:`~pytorch_lightning.trainer.Trainer.reload_dataloaders_every_n_epochs`</span></a> to
+a positive integer.</p>
+<p>It’s recommended that all data downloads and preparation happen in <code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code>.</p>
+<ul class="simple">
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></li>
+<li>…</li>
+<li><code class="xref py py-meth docutils literal notranslate"><span class="pre">prepare_data()</span></code></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.train_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.train_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">train_dataloader()</span></code></a></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.val_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.val_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">val_dataloader()</span></code></a></li>
+<li><a class="reference internal" href="#src.data_loaders.pl_data_module.MyDataModule.test_dataloader" title="src.data_loaders.pl_data_module.MyDataModule.test_dataloader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">test_dataloader()</span></code></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lightning adds the correct sampler for distributed and arbitrary hardware
+There is no need to set it yourself.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code> or a sequence of them specifying validation samples.</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">val_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,))])</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;/path/to/mnist/&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">loader</span>
+
+<span class="c1"># can also return multiple dataloaders</span>
+<span class="k">def</span> <span class="nf">val_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">loader_a</span><span class="p">,</span> <span class="n">loader_b</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">loader_n</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you don’t need a validation dataset and a <code class="xref py py-meth docutils literal notranslate"><span class="pre">validation_step()</span></code>, you don’t need to
+implement this method.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the case where you return multiple validation dataloaders, the <code class="xref py py-meth docutils literal notranslate"><span class="pre">validation_step()</span></code>
+will have an argument <code class="docutils literal notranslate"><span class="pre">dataloader_idx</span></code> which matches the order here.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="src.data_loaders.ds_image.html"
+                        title="previous chapter">src.data_loaders.ds_image module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="src.loss_funcs.html"
+                        title="next chapter">src.loss_funcs package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.data_loaders.pl_data_module.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="src.loss_funcs.html" title="src.loss_funcs package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="src.data_loaders.ds_image.html" title="src.data_loaders.ds_image module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">project v1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="src.data_loaders.html" >src.data_loaders package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, template.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+globals:
+  ex_name: fill
+  run_name: ${model.name} - ${dataset.name}
+  debug: false
+  max_epochs: 20
+  seed: 42
+  user: fill
+data_path:
+  test_data_dir: ./inputs/MNIST_small/test
+  test_df_path: ./inputs/MNIST_small/test/test.csv
+  train_data_dir: ./inputs/MNIST_small/train
+  train_df_path: ./inputs/MNIST_small/train/train.csv
+dataset:
+  name: ResizeDataset
+  kwargs:  
+    height: 28
+    width: 28  
+    convert_mode: L 
+dataloader:
+  batch_size: 8 
+  num_workers: 2
+model:
+  name: NN_Linear
+  kwargs:
+    in_sz: 784
+optimizer:
+  name: Adam
+  kwargs:
+    lr: 0.001
+scheduler:
+  name: CosineAnnealingLR
+  kwargs:
+    T_max: 10
+loss:
+  name: RMSELoss
+callback:
+  name: EarlyStopping
+  kwargs:
+    monitor: loss_valid
+    patience: 5
+    verbose: True
+splitter:
+  name: KFold
+  kwargs:
+    n_splits: 5
+    shuffle: True
+hydra:
+  run:
+    dir: ./outputs/${globals.ex_name}
+  sweep:
+    dir: ./outputs/${globals.ex_name}
+    subdir: ${model.name} - ${dataset.name}
+  job_logging:
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s] line%(lineno)d [%(levelname)s] %(message)s'
