@@ -1,0 +1,388 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pytorch lightning template &#8212; project v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils module" href="utils.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="utils module"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">project v1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pytorch-lightning-template">
+<h1>pytorch lightning template<a class="headerlink" href="#pytorch-lightning-template" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="repository">
+<h2>このrepositoryについて<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h2>
+<p>pytorchを使用した機械学習の実験を行う過程で</p>
+<ul class="simple">
+<li>「あれ、このclassってどうやって使うんだっけ…?」</li>
+<li>「チームの方にも自分のmoduleを使って欲しいけど、１からコードを読んでもらうのは申し訳ない…」</li>
+</ul>
+<div class="line-block">
+<div class="line">となることが多かった。</div>
+</div>
+<ul class="simple">
+<li>チーム間で実験ノウハウの共有</li>
+<li>コードの可読性向上</li>
+</ul>
+<div class="line-block">
+<div class="line">のため、pytorch lightningでコードのテンプレート化を行なった。</div>
+</div>
+</div>
+<div class="section" id="pytorch-lightning">
+<h2>なぜpytorch lightning？<a class="headerlink" href="#pytorch-lightning" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">pytorchは自由度の高い記述が可能な点が魅力だが、それ故にmain scriptが冗長になりがち。</div>
+<div class="line">結果として、コードを読み返して流用する作業に時間がかかる。</div>
+<div class="line">pytorch lightningは、<strong>pytorchの自由度を残しつつ、複雑な処理（主に学習ループ）をラップして提供する。</strong></div>
+<div class="line">これにより、<strong>本質的な作業（model開発や実験）に費やす時間が増える</strong>ことを期待している。</div>
+</div>
+</div>
+<div class="section" id="project">
+<h2>project構成<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">pytorch-lightning-template</div>
+<div class="line">┣ config・・・・・・・・・・・・・&lt;設定ファイル&gt;.yamlを置く場所</div>
+<div class="line">┃ ┗ run_config.yaml</div>
+<div class="line">┣ inputs・・・・・・・・・・・・・読み込むデータを置く場所</div>
+<div class="line">┃ ┣ data1.jpg</div>
+<div class="line">┃ ┣ data2.jpg</div>
+<div class="line">┃ ┃ :</div>
+<div class="line">┃ ┣ train.csv</div>
+<div class="line">┃ ┗ test.csv</div>
+<div class="line">┣ src・・・・・・・・・・・・・・「Sorce」の略！</div>
+<div class="line">┃ ┣ models</div>
+<div class="line">┃ ┃ ┣ <a class="reference internal" href="src.models.pl_model_module.html"><span class="doc">pl_model_module.py</span></a> ・・・pytorch_lightningのmodel moduleを記述</div>
+<div class="line">┃ ┃ ┗ <a class="reference internal" href="src.models.conv_net.html"><span class="doc">conv_net.py</span></a> ・・・・・・・pytorchの純model classを記述。モデル種類毎にmodule分ける。</div>
+<div class="line">┃ ┣ data_loaders</div>
+<div class="line">┃ ┃ ┣ <a class="reference internal" href="src.data_loaders.pl_data_module.html"><span class="doc">pl_data_module.py</span></a> ・・・pytorch_lightningのdata moduleを記述</div>
+<div class="line">┃ ┃ ┗ <a class="reference internal" href="src.data_loaders.ds_image.html"><span class="doc">ds_image.py</span></a> ・・・・・・・pytorchの純dataset classを記述。</div>
+<div class="line">┃ ┣ loss_funcs</div>
+<div class="line">┃ ┃ ┗ <a class="reference internal" href="src.loss_funcs.loss.html"><span class="doc">loss.py</span></a> ・・・・・・・・・loss関数を記述。現状パッケージとして管理する必要ない。要修正。</div>
+<div class="line">┃ ┗  <a class="reference internal" href="src.utils.html"><span class="doc">utils</span></a> ・・・・・・・・・その他必要な関数を記述。</div>
+<div class="line">┗ run.py・・・・・・・・・・・・実際に実行するのはこれ！</div>
+</div>
+<ul class="simple">
+<li>学習に必要な要素はsrc内に記述</li>
+<li>run.pyには学習フローのみを書く</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>使用方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>run.pyは以下のように記述する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import文は省略.なぜかsyntax highlightされない</span>
+
+<span class="n">config_path</span> <span class="o">=</span> <span class="s2">&quot;./config&quot;</span>
+<span class="n">config_name</span> <span class="o">=</span> <span class="s2">&quot;run_config.yaml&quot;</span>
+
+<span class="nd">@hydra.main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="n">config_name</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+   <span class="n">pl</span><span class="o">.</span><span class="n">seed_everything</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+   <span class="n">cwd</span> <span class="o">=</span> <span class="n">hydra</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_original_cwd</span><span class="p">()</span>
+
+   <span class="c1"># ----- dfの分割（train,valid) --------</span>
+   <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">data_path</span><span class="o">.</span><span class="n">train_df_path</span><span class="p">))</span>
+   <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">data_path</span><span class="o">.</span><span class="n">test_df_path</span><span class="p">))</span>
+   <span class="n">utils</span><span class="o">.</span><span class="n">path_fix</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">data_path</span><span class="p">)</span>
+   <span class="n">splitter</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_splitter</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">splitter</span><span class="p">)</span>
+
+   <span class="k">for</span> <span class="n">fold_i</span><span class="p">,</span> <span class="p">(</span><span class="n">trn_idx</span><span class="p">,</span> <span class="n">val_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;::::::: fold{fold_i} ::::::::&#39;</span><span class="p">)</span>
+      <span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trn_idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+      <span class="n">valid_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+   <span class="c1"># ---------mlflow loggerのインスタンス化  -----</span>
+      <span class="n">mlf_logger</span> <span class="o">=</span> <span class="n">MLFlowLogger</span><span class="p">(</span><span class="n">experiment_name</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">ex_name</span><span class="p">,</span>
+                                 <span class="n">save_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="s1">&#39;mlruns&#39;</span><span class="p">),</span>
+                                 <span class="n">run_name</span><span class="o">=</span><span class="n">f</span><span class="s1">&#39;fold{fold_i}-{cfg.globals.run_name}&#39;</span><span class="p">,</span>
+                                 <span class="p">)</span>
+      <span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_log_parameters</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+      <span class="n">mlf_logger</span><span class="o">.</span><span class="n">log_hyperparams</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+      <span class="n">model</span> <span class="o">=</span> <span class="n">MyLightningModule_reg</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">loss</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">scheduler</span><span class="p">)</span>
+
+      <span class="c1"># -------- 分割したdfを使ってdata moduleのインスタンス化 ---------</span>
+      <span class="n">datamodule</span> <span class="o">=</span> <span class="n">MyDataModule</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span>
+                                  <span class="n">cfg</span><span class="o">.</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">valid_df</span><span class="p">,</span> <span class="n">test_df</span><span class="p">)</span>
+      <span class="n">callback</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_callback</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+      <span class="n">trainer</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span>
+         <span class="n">max_epochs</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">max_epochs</span><span class="p">,</span>
+         <span class="n">logger</span><span class="o">=</span><span class="n">mlf_logger</span><span class="p">,</span>
+         <span class="n">log_every_n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+         <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">]</span>
+      <span class="p">)</span>
+
+      <span class="c1"># -----学習と推論-----</span>
+      <span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">datamodule</span><span class="o">=</span><span class="n">datamodule</span><span class="p">)</span>
+      <span class="n">trainer</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">datamodule</span><span class="o">=</span><span class="n">datamodule</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>このprojectでは、</dt>
+<dd><ul class="first last simple">
+<li>hydraによるハイパーパラメータ管理</li>
+<li>mlflow trackingによる実験log管理</li>
+</ul>
+</dd>
+</dl>
+<p>を行うことを前提としている。</p>
+<div class="section" id="hydra">
+<h3>hydraによるハイパーパラメータ管理<a class="headerlink" href="#hydra" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">hydraとは、Facebook researchが開発した設定ファイル管理packageのこと。</div>
+<div class="line">パラメータを.yamlで記述し、main関数をhydra.mainでラップすることで、</div>
+<div class="line">パラメータをmain関数にDict型式で与えることが出来る。</div>
+</div>
+<p>config file 記述例</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">run_config.yaml</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">globals</span><span class="p p-Indicator">:</span>
+   <span class="l l-Scalar l-Scalar-Plain">ex_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hogehoge</span>
+</pre></div>
+</div>
+</div>
+<p>main scriptでの動作</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">run.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s2">&quot;./config&quot;</span>
+<span class="n">config_name</span> <span class="o">=</span> <span class="s2">&quot;run_config.yaml&quot;</span>
+
+<span class="nd">@hydra.main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="n">config_name</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span> <span class="n">cfg</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">ex_name</span><span class="p">)</span> <span class="c1"># 通常のDictとは異なり、name space記法でアクセス可</span>
+</pre></div>
+</div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hogehoge</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">hydraの強力な機能の一つに「Multi-run」がある。</div>
+<div class="line">script実行時に-mオプションをつけ、config.yamlに記載した実験条件をkey=valueの形で複数渡すと、</div>
+<div class="line">自動的に全組み合わせで実験を行なってくれる。</div>
+<div class="line">例えば、modelA,modelBそれぞれについて、datasetA,datasetBを試したいときは、</div>
+<div class="line">以下の形で実行すると良い。</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">bash</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python run.py -m model.name<span class="o">=</span>modelA,modelB dataset.name<span class="o">=</span>datasetA,datasetB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mlflow-trackinglog">
+<h3>mlflow trackingによる実験log管理<a class="headerlink" href="#mlflow-trackinglog" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">mlflowとは、MLOps管理ツールのこと。</div>
+<div class="line">そのうちのmlflow trackingが実験logの管理に対応している。</div>
+<div class="line">pytorch lightningには、mlflowを使用するためのクラスが用意されており、</div>
+<div class="line">以下の記述でmlflow loggerをインスタンス化して、trainer classに渡すことで、</div>
+<div class="line">学習途中のmetricの記録を行なってくれる。</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">run.py</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytorch_lightning.loggers</span> <span class="kn">import</span> <span class="n">MLFlowLogger</span>
+<span class="c1"># 中略</span>
+   <span class="nd">@hydra.main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="n">config_name</span><span class="p">)</span>
+   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+<span class="hll">         <span class="n">mlf_logger</span> <span class="o">=</span> <span class="n">MLFlowLogger</span><span class="p">(</span><span class="n">experiment_name</span><span class="o">=</span><span class="s1">&#39;hogehge&#39;</span><span class="p">,</span><span class="n">run_name</span><span class="o">=</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
+</span>         <span class="c1"># 中略</span>
+         <span class="n">trainer</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span>
+            <span class="n">max_epochs</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">globals</span><span class="o">.</span><span class="n">max_epochs</span><span class="p">,</span>
+<span class="hll">            <span class="n">logger</span><span class="o">=</span><span class="n">mlf_logger</span><span class="p">,</span>
+</span>            <span class="n">log_every_n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">]</span>
+         <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">スクリプトを実行すると、mlruns ディレクトリが生成され、そこに実験結果が記録される。</div>
+<div class="line">注意点として、hydraを使う際は、カレントディレクトリが実行単位毎に変わってしまう。</div>
+<div class="line">任意のURIに実験結果を保存したい場合は、環境変数としてmlrunsを作成するURIを指定する必要がある。</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">bash</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span>file:&lt;カレントディレクトリへのpath&gt;
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">またはスクリプト内で指定してもOK <a class="reference internal" href="utils.html"><span class="doc">waon</span></a></div>
+<div class="line">EC2等でmlflow tracking serverを立ててURIで指定すれば、webブラウザからアクセスして実験結果を確認することもできる。</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.models.html">src.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.models.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.models.conv_net.html">src.models.conv_net module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.models.pl_model_module.html">src.models.pl_model_module module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.models.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.data_loaders.html">src.data_loaders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.data_loaders.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.data_loaders.ds_image.html">src.data_loaders.ds_image module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.data_loaders.pl_data_module.html">src.data_loaders.pl_data_module module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.data_loaders.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.loss_funcs.html">src.loss_funcs package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.loss_funcs.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.loss_funcs.loss.html">src.loss_funcs.loss module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.loss_funcs.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>注意事項&amp;お願い<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>pytorchちょっとわかる人が他人の猿真似で書いたコードです。至らぬところがたくさんあります🙇‍♂️</li>
+<li>汎用性のあるテンプレートの作成を目指しています。「もっとこう書いた方がいいんじゃない？」という箇所があったら気軽にissueに投げてください！</li>
+<li>説明不十分なところが多々あるので、気になる点があれば気軽に質問ください。</li>
+<li>途中で力尽きてます、、全部にdocstring書けてません。</li>
+</ul>
+</div>
+<div class="section" id="todo">
+<h2>ToDo<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>KFoldもpl.lightning moduleで動的に切り替えられるようにする（したい）。</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>参考にしたサイト<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://tech.jxpress.net/entry/2021/11/17/112214">pytorchlighitningによるテンプレート管理を行おうと思ったキッカケ</a></div>
+<div class="line"><a class="reference external" href="https://helve-blog.com/posts/python/sphinx-documentation/">sphinxでpython docstringからドキュメントを自動生成する</a></div>
+<div class="line"><a class="reference external" href="https://www.slideshare.net/k5yamate/sphinx-29486451">sphinxはじめの一歩</a></div>
+<div class="line"><a class="reference external" href="https://www.slideshare.net/cocodrips/docstring-pyconjp2019">チームメイトのためにdocstringを書こう!!</a></div>
+<div class="line"><a class="reference external" href="https://venoda.hatenablog.com/entry/2021/06/06/131004">pytorch lightning 基礎</a></div>
+<div class="line"><a class="reference external" href="https://blog.chowagiken.co.jp/entry/2020/02/25/MLflow%E3%81%AE%E5%B0%8E%E5%85%A5%EF%BC%88%EF%BC%92%EF%BC%89%E5%AE%9F%E9%A8%93%E3%81%AE%E6%95%B4%E7%90%86%E3%81%A8%E6%AF%94%E8%BC%83%E3%82%92PyTorch%2Bpytorch-lightning%E3%81%A7%E3%82%84%E3%81%A3">mlflow+pytorh-lightning</a></div>
+<div class="line"><a class="reference external" href="https://hesma2.hatenablog.com/entry/2021/04/03/180206#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81-indexrst-%E3%82%92%E7%B7%A8%E9%9B%86">sphinxによるdocstring生成</a></div>
+<div class="line"><a class="reference external" href="https://qiita.com/flcn-x/items/91604508b61c91b6163f">sphinx warningの解決</a></div>
+<div class="line"><a class="reference external" href="https://qiita.com/11ohina017/items/118b3b42b612e527dc1d">docstring google style 入門</a></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pytorch lightning template</a><ul>
+<li><a class="reference internal" href="#repository">このrepositoryについて</a></li>
+<li><a class="reference internal" href="#pytorch-lightning">なぜpytorch lightning？</a></li>
+<li><a class="reference internal" href="#project">project構成</a></li>
+<li><a class="reference internal" href="#id1">使用方法</a><ul>
+<li><a class="reference internal" href="#hydra">hydraによるハイパーパラメータ管理</a></li>
+<li><a class="reference internal" href="#mlflow-trackinglog">mlflow trackingによる実験log管理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#id2">注意事項&amp;お願い</a></li>
+<li><a class="reference internal" href="#todo">ToDo</a></li>
+<li><a class="reference internal" href="#id3">参考にしたサイト</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="utils.html"
+                        title="next chapter">utils module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="utils module"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">project v1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, template.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
